@@ -73,7 +73,7 @@ class Service:
             })
         return flow
 
-    def get_user_current_state (self, user_id: str):
+    def get_user_current_state (self, user_id: str)-> dict[str,str]:
 
         user = self.validate_and_get_user(user_id)
         step_id = user.current_step
