@@ -9,7 +9,7 @@ Built with **Python** and **FastAPI**.
 
 <br clear="left"/>
 
----
+
 
 ## Requirements
 
