@@ -1,0 +1,102 @@
+{
+  "version": "1.0",
+  "initial_step": "PERSONAL_DETAILS",
+  "transitions": {
+    "PERSONAL_DETAILS": {
+      "completed": "IQ_TEST"
+    },
+    "IQ_TEST": {
+      "default_outcome": "passed",
+      "passed": "INTERVIEW",
+      "failed": "REJECTED"
+    },
+    "INTERVIEW": {
+      "default_outcome": "passed",
+      "passed": "SIGN_CONTRACT",
+      "failed": "REJECTED"
+    },
+    "SIGN_CONTRACT": {
+      "completed": "PAYMENT"
+    },
+    "PAYMENT": {
+      "completed": "JOIN_SLACK"
+    },
+    "JOIN_SLACK": {
+      "completed": "ACCEPTED"
+    }
+  },
+  "steps": {
+    "PERSONAL_DETAILS": {
+      "display_name": "Personal Details Form",
+      "tasks": [
+        {
+          "id": "submit_details",
+          "display_name": "submit details"
+        }
+      ]
+    },
+    "IQ_TEST": {
+      "display_name": "IQ Test",
+      "tasks": [
+        {
+          "id": "complete_iq_test",
+          "display_name": "complete iq test",
+          "condition": {
+            "type": "THRESHOLD",
+            "field": "score",
+            "value": 75
+          }
+        }
+      ]
+    },
+    "INTERVIEW": {
+      "display_name": "Interview",
+      "tasks": [
+        {
+          "id": "schedule_interview",
+          "display_name": "schedule interview"
+        },
+        {
+          "id": "perform_interview",
+          "display_name": "perform interview",
+          "condition": {
+            "type": "MATCH",
+            "field": "decision",
+            "expected": "passed_interview"
+          }
+        }
+      ]
+    },
+    "SIGN_CONTRACT": {
+      "display_name": "Sign Contract",
+      "tasks": [
+        {
+          "id": "upload_id",
+          "display_name": "upload id"
+        },
+        {
+          "id": "sign_contract",
+          "display_name": "sign contract"
+        }
+      ]
+    },
+    "PAYMENT": {
+      "display_name": "Payment",
+      "tasks": [
+        {
+          "id": "make_payment",
+          "display_name": "make payment"
+        }
+      ]
+    },
+    "JOIN_SLACK": {
+      "display_name": "Join Slack",
+      "tasks": [
+        {
+          "id": "join_slack_channel",
+          "display_name": "join slack channel"
+        }
+      ]
+    }
+  }
+}
