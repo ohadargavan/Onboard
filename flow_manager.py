@@ -1,5 +1,6 @@
 import json
 from collections import deque
+from typing import Any
 
 from step import Step
 from conditions import *
@@ -113,6 +114,6 @@ class FlowManager:
         return future_steps
 
 
-    def get_tasks_for_step (self, step_id: str):
-        #   TODO
-        return []
+    def get_tasks_for_step (self, step_id: str) ->list[dict[str, Any]]:
+        step_data = self.steps.get(step_id, {})
+        return step_data.get("tasks", [])
