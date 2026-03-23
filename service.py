@@ -61,7 +61,7 @@ class Service:
             ordered_tasks_from_json = self.flow_manager.get_tasks_for_step(future_step_id)
             formatted_tasks = []
             for task in ordered_tasks_from_json:
-                task_id = task["id"]
+                task_id = task.id
                 formatted_tasks.append({
                     "task_id": task_id,
                     "is_completed": False
