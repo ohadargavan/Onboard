@@ -5,7 +5,6 @@ from main import app
 
 client = TestClient(app)
 
-
 class TestCreateUser(unittest.TestCase):
 
     def test_create_user_returns_200(self):
