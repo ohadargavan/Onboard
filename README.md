@@ -70,6 +70,22 @@ To see all the endpoints in your browser: `http://localhost:8000/docs`
 
 ---
 
+## Modifying the Flow
+
+The flow is fully defined in `flow.json` — no code changes needed.
+
+**To add a step:**
+1. Add it as a step in the JSON under `"steps"`.
+2. Edit the `"transitions"` map:
+   - **Regular step:** make sure the path of default outcomes goes through the new step.
+   - **Hidden step** (only visible to certain users): make sure the path of default outcomes does *not* go through it. Instead, route to it via a specific condition/outcome in the previous step's transition. See `flow_creative_PM.json` for an example.
+
+**To add a task to a step:**
+- Regular task: just add it in the right order under the step in the JSON.
+- Hidden task: treat it like a hidden step — see above.
+
+---
+
 ## Run the tests
 
 Make sure you are in the project root folder, then:
@@ -89,13 +105,17 @@ cd tests
 python frontend_test.py
 ```
 
-> All tests were written by AI (Claude by Anthropic).
-> This was an intentional choice — the rest of the project was built with AI assistance, but the tests are where I gave it full autonomy. The difference felt worth marking.
+> All tests were written by AI.
+---
+
+## Development Process
+
+The core logic and flow engine were initially implemented as a standalone Python structure, focusing on functional requirements without immediate integration or running the program.
+
+Once the logic seemed complete, the project was migrated to GitHub for version control, then integrated with FastAPI, and finally went through unit and integration tests.
 
 ---
 
 ## Notes
 
 - There is no real database. All data is stored in memory, so it resets every time you restart the server.
-- The flow can be changed by editing `flow.json` — no code changes needed.
-- An alternative flow with a second-chance IQ test is available in `flow_creative_PM.json`. To use it, change the filename passed to `Service(...)` in `main.py`.
