@@ -2,10 +2,13 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Dict, Any
 from service import Service
+import os
+
 
 app = FastAPI(title="Onboard Admissions API")
 
-admissions_service = Service("flow.json")
+admissions_service = Service(os.path.join(os.path.dirname(__file__), "flow.json"))
+
 
 # ---Pydantic Models for incoming info---
 
