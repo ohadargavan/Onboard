@@ -10,12 +10,12 @@ admissions_service = Service("flow.json")
 # ---Pydantic Models for incoming info---
 
 class CreateUserRequest(BaseModel):
-    # Endpoint 1: POST request
+    # (Endpoint 1: POST request)
 
     email: str
 
 class SubmitTaskRequest(BaseModel):
-    # Endpoint 4: PUT
+    # (Endpoint 4: PUT)
 
     user_id: str
     step_name: str

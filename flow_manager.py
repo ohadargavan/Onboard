@@ -20,16 +20,14 @@ class FlowManager:
 
         self.steps = {}
         self._build_steps(data["steps"])
-        self.step_distances = self._calculate_distances()
 
     def _build_steps(self, steps_data: dict):
         for step_id, step_info in steps_data.items():
             tasks_list = self._build_tasks(step_info["tasks"])
             #extract step info
-            step =Step(step_id, step_info["display_name"],step_info["visible"],tasks_list)
+            step =Step(step_id, step_info["display_name"],tasks_list)
             self.steps[step_id] = step
 
-    @staticmethod
     def _build_tasks(self, tasks_data: list) -> list:
 
         real_tasks_list = []

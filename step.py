@@ -2,10 +2,9 @@ from task import Task
 
 class Step:
     # The constructor initializes the step with its properties
-    def __init__(self, step_id: str, display_name: str, visible: bool, tasks: list[Task]):
+    def __init__(self, step_id: str, display_name: str, tasks: list[Task]):
         self.id = step_id
         self.display_name = display_name
-        self.visible = visible
         self.tasks = tasks
 
     # Checks if all the tasks in this step are completed
