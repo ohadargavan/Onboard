@@ -75,25 +75,6 @@ class FlowManager:
     def get_initial_step (self) -> str:
         return self.initial_step
 
-    #DELETE THIS FUNCTION
-    def _calculate_distances(self) -> dict:
-        #We use BFS to determine the order of the step from the root (initial step)
-        queue = deque([(self.initial_step, 1)])
-        distances = {self.initial_step: 1}
-
-        while queue:
-            curr_id, dist = queue.popleft()
-            # Try all possible options from current stage
-            for next_id in self.transitions.get(curr_id, {}).values():
-                if next_id not in distances:  # Prevent infinite loops
-                    distances[next_id] = dist + 1
-                    queue.append((next_id, dist + 1))
-        return distances
-
-    #DELETE THIS FUNCTION
-    def get_step_distance(self, step_id: str) -> int:
-        return self.step_distances.get(step_id, -1)
-
     def get_default_flow_from_step (self, current_step_id: str) -> list[str]:
         future_steps = []
         step_to_check = current_step_id

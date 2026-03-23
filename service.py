@@ -14,7 +14,7 @@ class Service:
 
     def create_user (self, email: str) -> str:
         user_id = str(uuid.uuid4())
-        initial_step = self.flow_manager.get_initial_step() #need to implement
+        initial_step = self.flow_manager.get_initial_step()
         user = User(user_id, email, initial_step)
         self.store.save_user(user)
         return user_id
