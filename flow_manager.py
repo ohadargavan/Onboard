@@ -35,7 +35,7 @@ class FlowManager:
         for task_data in tasks_data:
             condition_obj = None
 
-            if task_data.get("is_conditioned"):
+            if "condition" in task_data:
                 cond_data = task_data["condition"]
 
                 match cond_data["type"]:
@@ -54,7 +54,6 @@ class FlowManager:
             task_obj = Task(
                 task_data["id"],
                 task_data.get("display_name",""),
-                task_data.get("is_conditioned", False),
                 condition_obj
             )
 
@@ -93,6 +92,7 @@ class FlowManager:
         return future_steps
 
 
-    def get_tasks_for_step (self, step_id: str) ->list[dict[str, Any]]:
-        step_data = self.steps.get(step_id, {})
-        return step_data.get("tasks", [])
+    def get_tasks_for_step (self, step_id: str):
+        step_data = self.steps.get(step_id)
+
+        return step_data.tasks

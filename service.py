@@ -37,7 +37,7 @@ class Service:
 
             formatted_tasks = []
             for task in ordered_tasks_from_json:
-                task_id = task["id"]
+                task_id = task.id
                 formatted_tasks.append({
                     "task_id": task_id,
                     "is_completed": task_id in user_completed_tasks
@@ -73,7 +73,7 @@ class Service:
             })
         return flow
 
-    def get_user_current_state (self, user_id: str)-> dict[str,str]:
+    def get_user_current_state (self, user_id: str)-> dict[str,str] | None:
 
         user = self.validate_and_get_user(user_id)
         step_id = user.current_step
@@ -83,7 +83,7 @@ class Service:
         cur_step_tasks = self.flow_manager.get_tasks_for_step(step_id)
         next_task = None
         for task in cur_step_tasks:
-            task_id = task["id"]
+            task_id = task.id
             if task_id not in cur_step_completed_tasks:
                 next_task = task_id
                 break
