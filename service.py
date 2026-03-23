@@ -117,7 +117,7 @@ class Service:
             else:
                 user.move_to_step(next_step_id)
 
-        #Important for future database implementation. Now it's not needed because "user" is a referance
+        # upsert for future DB support
         self.store.save_user(user)
 
     def validate_and_get_user (self, user_id: str) -> User:

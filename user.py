@@ -9,7 +9,7 @@ class User:
         self.status = "IN_PROGRESS"
         self.current_step = initial_step
         self.completed_steps = []
-        #dict. key: step_id, value: dict (task_id -> outcome)
+        #dict[str, dict[str, str]]
         self.completed_tasks_by_step = {}
 
 

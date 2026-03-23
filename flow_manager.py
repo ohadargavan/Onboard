@@ -1,5 +1,4 @@
 import json
-from collections import deque
 from typing import Any
 
 from step import Step
