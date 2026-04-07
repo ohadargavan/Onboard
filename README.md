@@ -1,4 +1,3 @@
-<img src="Onboard_logo.PNG" width="180" align="left" style="margin-right: 20px"/>
 
 # Onboard Admissions API
 
