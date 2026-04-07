@@ -104,7 +104,7 @@ cd tests
 python frontend_test.py
 ```
 
-> All tests were written by AI.
+
 ---
 
 ## Development Process
